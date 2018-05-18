@@ -17,8 +17,8 @@ var apiai = require('apiai');
 var apiapp = apiai("d92b6db3d22745a78f064f96fce19db4");
 
 //Body parser
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res){
   res.send('Hello Salesforce');
@@ -26,6 +26,7 @@ app.get('/', function(req, res){
 
 app.post('/chat', function(req, res){
   console.log('req-->',req);
+    console.log('res-->',res);
   var request = apiapp.textRequest(req.body.chatText, {
     sessionId: '.sxFXzAaWbLJ6Ai21h_vHxmWJCK70sB47EqeB6fDCVgQoBXom.PI9eKH9oIvNd'
   });
@@ -35,7 +36,7 @@ app.post('/chat', function(req, res){
       res.send(response);
   });
   request.on('error', function(error) {
-      console.log(error);
+      console.log("error",error);
 
       res.send(error);
   });
