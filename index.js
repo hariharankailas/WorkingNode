@@ -31,9 +31,16 @@ app.post('/chat', function(req, res){
     sessionId: '00Dr00000008cge'
   });
 
-
   request.on('response', function(response) {
       console.log('hh',response);
+  response.followupEvent =
+       {
+     "name": "askcon",
+     "data": {
+        "con":"9008074153"
+     }
+
+
       res.send(response);
   });
   request.on('error', function(error) {
