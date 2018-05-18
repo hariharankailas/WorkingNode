@@ -27,8 +27,9 @@ app.get('/', function(req, res){
 app.post('/chat', function(req, res){
 
   var request = apiapp.textRequest(req.body.chatText, {
-    sessionId: '4BGUAgBUD_1NO0WOl8UjukTbKa4C5FdnYYO25tlVNknms6medUzZrGHXsC3FH72'
+    sessionId: '.sxFXzAaWbLJ6Ai21h_vHxmWJCK70sB47EqeB6fDCVgQoBXom.PI9eKH9oIvNd'
   });
+
   request.on('response', function(response) {
       console.log(response);
       res.send(response);
@@ -42,5 +43,5 @@ app.post('/chat', function(req, res){
 });
 
 app.listen(PORT, function(){
-  console.log('server started on Port 3000...')
+  console.log('server started on Port' +PORT);
 });
