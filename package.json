@@ -11,6 +11,8 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "apiai": "^4.0.3",
+    "body-parser": "^1.18.3",
     "ejs": "^2.5.6",
     "express": "^4.15.2"
   },
