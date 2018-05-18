@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000
 //   .get('/', (req, res) => res.render('pages/index'))
 //   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 var express = require('express');
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 var path = require('path');
 
 var app = express();
@@ -17,8 +17,8 @@ var apiai = require('apiai');
 var apiapp = apiai("d92b6db3d22745a78f064f96fce19db4");
 
 //Body parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res){
   res.send('Hello Salesforce');
