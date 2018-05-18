@@ -28,8 +28,9 @@ app.post('/chat', function(req, res){
   console.log('req-->',req);
     console.log('res-->',res);
   var request = apiapp.textRequest(req.body.chatText, {
-    sessionId: '.sxFXzAaWbLJ6Ai21h_vHxmWJCK70sB47EqeB6fDCVgQoBXom.PI9eKH9oIvNd'
+    sessionId: '00Dr00000008cge'
   });
+
 
   request.on('response', function(response) {
       console.log('hh',response);
