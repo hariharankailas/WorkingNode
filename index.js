@@ -31,7 +31,7 @@ app.post('/chat', function(req, res){
   });
 
   request.on('response', function(response) {
-      console.log(response);
+      console.log('hh',response);
       res.send(response);
   });
   request.on('error', function(error) {
