@@ -25,7 +25,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/chat', function(req, res){
-
+  console.log('req-->',req);
   var request = apiapp.textRequest(req.body.chatText, {
     sessionId: '.sxFXzAaWbLJ6Ai21h_vHxmWJCK70sB47EqeB6fDCVgQoBXom.PI9eKH9oIvNd'
   });
