@@ -38,12 +38,15 @@ app.post('/chat', function(req, res){
           };
 
           var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
+          console.log("hh-event",evRequest)
 
+          evRequest.on('response', function(response) {
+              console.log('hh-evRequest',response);
+              res.send(response);
+          });
 
   request.on('response', function(response) {
       console.log('hh',response);
-
-
 
       res.send(response);
   });
