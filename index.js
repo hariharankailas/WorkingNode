@@ -31,9 +31,18 @@ app.post('/chat', function(req, res){
     sessionId: '00Dr00000008cge'
   });
 
+
+          let eventArg = {
+              "name": 'conask',
+              "data":{ 'conask':'9008074153'}
+          };
+
+          var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
+
+
   request.on('response', function(response) {
       console.log('hh',response);
-  
+
 
 
       res.send(response);
