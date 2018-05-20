@@ -42,14 +42,19 @@ app.post('/chat', function(req, res){
   //
                 var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
                 console.log("hh-event",evRequest)
+                console.log("hh-event-res",res)
+  //
   //
                 evRequest.on('response', function(response) {
                     console.log('hh-evRequest',response);
                     res.send(response);
                 });
+                    console.log("hh-event-response",response)
   //             }
-  //     evRequest.end();
+      evRequest.end();
 }
+console.log("hh-after-response",response)
+
       res.send(response);
    });
   request.on('error', function(error) {
