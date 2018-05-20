@@ -50,7 +50,7 @@ app.post('/chat', function(req, res){
   //             }
   //     evRequest.end();
   //     res.send(response);
-  // });
+   });
   request.on('error', function(error) {
       console.log("error",error);
 
