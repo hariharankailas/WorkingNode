@@ -32,25 +32,25 @@ app.post('/chat', function(req, res){
   });
 
   request.on('response', function(response) {
-      console.log('hh',response);
-
-      if(response.result.metadata.intentName == "full_name"){
-                let eventArg = {
-                    "name": 'conask',
-                    "data":{ 'conask':'9008074153'}
-                };
-
-                var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
-                console.log("hh-event",evRequest)
-
-                evRequest.on('response', function(response) {
-                    console.log('hh-evRequest',response);
-                    res.send(response);
-                });
-              }
-      evRequest.end();
-      res.send(response);
-  });
+      console.log('hh',response.result.metadata);
+  // 
+  //     if(response.result.metadata.intentName == "full_name"){
+  //               let eventArg = {
+  //                   "name": 'conask',
+  //                   "data":{ 'conask':'9008074153'}
+  //               };
+  //
+  //               var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
+  //               console.log("hh-event",evRequest)
+  //
+  //               evRequest.on('response', function(response) {
+  //                   console.log('hh-evRequest',response);
+  //                   res.send(response);
+  //               });
+  //             }
+  //     evRequest.end();
+  //     res.send(response);
+  // });
   request.on('error', function(error) {
       console.log("error",error);
 
