@@ -33,7 +33,7 @@ app.post('/chat', function(req, res){
 
   request.on('response', function(response) {
       console.log('hh',response.result.metadata);
-  // 
+  //
   //     if(response.result.metadata.intentName == "full_name"){
   //               let eventArg = {
   //                   "name": 'conask',
@@ -61,4 +61,5 @@ app.post('/chat', function(req, res){
 
 app.listen(PORT, function(){
   console.log('server started on Port' +PORT);
+});
 });
