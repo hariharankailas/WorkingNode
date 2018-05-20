@@ -53,9 +53,9 @@ app.post('/chat', function(req, res){
   //             }
       evRequest.end();
 }
-console.log("hh-after-response",response)
+else{
+      res.send(response);}
 
-      res.send(response);
    });
   request.on('error', function(error) {
       console.log("error",error);
