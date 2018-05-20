@@ -34,14 +34,14 @@ app.post('/chat', function(req, res){
   request.on('response', function(response) {
       console.log('hh',response.result.metadata.intentName);
   //
-  //     if(response.result.metadata.intentName == "full_name"){
-  //               let eventArg = {
-  //                   "name": 'conask',
-  //                   "data":{ 'conask':'9008074153'}
-  //               };
+      if(response.result.metadata.intentName == "full_name"){
+                let eventArg = {
+                    "name": 'conask',
+                    "data":{ 'conask':'9008074153'}
+                };
   //
-  //               var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
-  //               console.log("hh-event",evRequest)
+                var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
+                console.log("hh-event",evRequest)
   //
   //               evRequest.on('response', function(response) {
   //                   console.log('hh-evRequest',response);
