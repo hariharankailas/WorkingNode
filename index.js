@@ -42,7 +42,7 @@ let eventArg;
 
     if(response.result.metadata.intentName == "contact_user - custom"){
                eventArg = {
-                  "name": 'incdesk'
+                  "name": 'incdesc'
     };
   }
 
