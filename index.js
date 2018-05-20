@@ -40,7 +40,7 @@ let eventArg;
     };
   }
 
-    if(response.result.metadata.intentName == "incident_desc"){
+    if(response.result.metadata.intentName == "contact_user - custom"){
                eventArg = {
                   "name": 'incdesk'
     };
