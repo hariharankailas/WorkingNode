@@ -32,7 +32,7 @@ app.post('/chat', function(req, res){
   });
 
   request.on('response', function(response) {
-      console.log('hh',response);
+      console.log('hh',response.result.metadata.intentName);
   //
   //     if(response.result.metadata.intentName == "full_name"){
   //               let eventArg = {
