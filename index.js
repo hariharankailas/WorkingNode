@@ -21,50 +21,56 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res){
-  res.send('Hello Salesforce');
+res.send('Hello Salesforce');
 });
 
 app.post('/chat', function(req, res){
-  console.log('req-->',req);
-    console.log('res-->',res);
-  var request = apiapp.textRequest(req.body.chatText, {
-    sessionId: '00Dr00000008cge'
-  });
-
-  request.on('response', function(response) {
-      console.log('hh',response.result.metadata.intentName);
-  //
-      if(response.result.metadata.intentName == "full_name"){
-                let eventArg = {
-                    "name": 'conask',
-                    "data":{ 'conask':'9008074153'}
-                };
-  //
-                var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
-                console.log("hh-event",evRequest)
-                console.log("hh-event-res",res)
-  //
-  //
-                evRequest.on('response', function(response) {
-                    console.log('hh-evRequest',response);
-                    res.send(response);
-                });
-                    console.log("hh-event-response",response)
-  //             }
-      evRequest.end();
-}
-else{
-      res.send(response);}
-
-   });
-  request.on('error', function(error) {
-      console.log("error",error);
-
-      res.send(error);
-  });
-  request.end();
+console.log('req-->',req);
+  console.log('res-->',res);
+var request = apiapp.textRequest(req.body.chatText, {
+  sessionId: '00Dr00000008cge'
 });
 
+request.on('response', function(response){
+    console.log('hh',response.result.metadata.intentName);
+let eventArg;
+    if(response.result.metadata.intentName == "full_name"){
+               eventArg = {
+                  "name": 'conask'
+    };
+  }
+
+    if(response.result.metadata.intentName == "incident_desc"){
+               eventArg = {
+                  "name": 'incdesk'
+    };
+  }
+
+if(eventArg){
+  var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
+  console.log("hh-event",evRequest)
+//
+  evRequest.on('response', function(response) {
+      res.send(response);
+  });
+  console.log("hh-event-response",response)
+    evRequest.end();
+}
+else{
+    res.send(response);
+  }
+
+});
+request.on('error', function(error) {
+    console.log("error",error);
+
+    res.send(error);
+});
+
+request.end();
+
+});//app.post ends here
+
 app.listen(PORT, function(){
-  console.log('server started on Port' +PORT);
+console.log('server started on Port' +PORT);
 });
