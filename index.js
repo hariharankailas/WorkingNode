@@ -36,7 +36,7 @@ request.on('response', function(response){
 let eventArg;
 //Welcome event Fire
 console.log("hh-req",req.body.chatText)
-if(req.body.chatText ==null){
+if(req.body.chatText ==null||req.body.chatText =='null'){
            eventArg = {
               "name": 'Welcome'
 };
