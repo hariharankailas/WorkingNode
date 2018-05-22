@@ -32,10 +32,11 @@ sessionId: '00Dr00000008cge'
 });
 
 request.on('response', function(response){
-  console.log('hh',response.result.metadata.intentName);
+  console.log('hh-intent',response.result.metadata.intentName);
 let eventArg;
 //Welcome event Fire
-if(response.result.body ==null){
+console.log("hh-response",response.result)
+if(response.result.body.chatText =='null'){
            eventArg = {
               "name": 'Welcome'
 };
