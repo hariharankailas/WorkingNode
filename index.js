@@ -26,45 +26,52 @@ res.send('Hello Salesforce');
 
 app.post('/chat', function(req, res){
 console.log('req-->',req);
-  console.log('res-->',res);
+console.log('res-->',res);
 var request = apiapp.textRequest(req.body.chatText, {
-  sessionId: '00Dr00000008cge'
+sessionId: '00Dr00000008cge'
 });
 
 request.on('response', function(response){
-    console.log('hh',response.result.metadata.intentName);
+  console.log('hh',response.result.metadata.intentName);
 let eventArg;
-    if(response.result.metadata.intentName == "full_name"){
-               eventArg = {
-                  "name": 'conask'
-    };
-  }
+//Welcome event Fire
+if(response.result.body ==null){
+           eventArg = {
+              "name": 'Welcome'
+};
+}
 
-    if(response.result.metadata.intentName == "contact_user - custom"){
-               eventArg = {
-                  "name": 'incdesc'
-    };
-  }
+  if(response.result.metadata.intentName == "full_name"){
+             eventArg = {
+                "name": 'conask'
+  };
+}
+
+  if(response.result.metadata.intentName == "contact_user - custom"){
+             eventArg = {
+                "name": 'incdesc'
+  };
+}
 
 if(eventArg){
-  var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
-  console.log("hh-event",evRequest)
+var evRequest = apiapp.eventRequest(eventArg, {sessionId: '00Dr00000008cge'});
+console.log("hh-event",evRequest)
 //
-  evRequest.on('response', function(response) {
-      res.send(response);
-  });
-  console.log("hh-event-response",response)
-    evRequest.end();
+evRequest.on('response', function(response) {
+    res.send(response);
+});
+console.log("hh-event-response",response)
+  evRequest.end();
 }
 else{
-    res.send(response);
-  }
+  res.send(response);
+}
 
 });
 request.on('error', function(error) {
-    console.log("error",error);
+  console.log("error",error);
 
-    res.send(error);
+  res.send(error);
 });
 
 request.end();
