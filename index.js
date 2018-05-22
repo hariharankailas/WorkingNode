@@ -35,7 +35,7 @@ request.on('response', function(response){
   console.log('hh-intent',response.result.metadata.intentName);
 let eventArg;
 //Welcome event Fire
-console.log("hh-response"req.body.chatText)
+console.log("hh-response",req.body.chatText)
 // if(response.result.body.chatText =='null'){
 //            eventArg = {
 //               "name": 'Welcome'
